@@ -33,11 +33,21 @@ export const FieldEditor = ({ value = [], onChange, limit, onComplete }: Props) 
   const addField = (i: number, defaults?: { language: QueryLanguage }) => () => {
     if (!limit || value.length < limit) {
       onChange([...value.slice(0, i + 1), { name: '', jsonPath: '', ...defaults }, ...value.slice(i + 1)]);
+      console.log('Check ...value on Add Button: ', value.length, ' at ', i, ';limit ', limit);
+      console.log([...value.slice(0, i + 1)]);
+      console.log([...value.slice(0, i + 1), { name: '', jsonPath: '', ...defaults }, ...value.slice(i + 1)]);
+      console.log([...value]);
     }
   };
   const removeField = (i: number) => () => {
     onChange([...value.slice(0, i), ...value.slice(i + 1)]);
+    console.log('Check ...value on Remove Button: ', value.length, ' at ', i);
+    console.log([...value]);
+    console.log([...value.slice(0, i)]);
+    console.log([...value.slice(i + 1)]);
   };
+
+  console.dir(value);
 
   return (
     <>
